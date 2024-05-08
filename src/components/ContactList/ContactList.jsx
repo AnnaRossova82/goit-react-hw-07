@@ -1,4 +1,27 @@
 import { useSelector } from 'react-redux';
+import { selectFilteredContacts } from '../../redux/contactsSlice';
+import css from "./ContactList.module.css";
+import Contact from '../Contact/Contact';
+
+const ContactList = () => {
+  const filteredContacts = useSelector(selectFilteredContacts);
+
+  return (
+    <div className={css.container}>
+      {filteredContacts.map((contact) => (
+        <div className={css.card} key={contact.id}>
+          <Contact id={contact.id} name={contact.name} number={contact.number} />
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default ContactList;
+
+
+
+/* import { useSelector } from 'react-redux';
 import { selectContacts } from '../../redux/contactsSlice';
 import css from "./ContactList.module.css";
 import Contact from '../Contact/Contact';
@@ -22,7 +45,7 @@ const ContactList = () => {
   );
 };
 
-export default ContactList;
+export default ContactList; */
 
 
 /* import { useDispatch, useSelector } from 'react-redux';

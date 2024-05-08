@@ -1,9 +1,17 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchContacts } from '../redux/contactsOps' 
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import SearchBox from './SearchBox/SearchBox';
 
 function App() {
- 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+
+    dispatch(fetchContacts());
+  }, [dispatch]); 
 
   return (
     <div>
@@ -16,3 +24,4 @@ function App() {
 }
 
 export default App;
+
